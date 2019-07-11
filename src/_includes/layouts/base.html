@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {%- for css in encore.dribble.css -%}
+        <link rel="stylesheet" href="{{ css }}" type="text/css">
+    {%- endfor -%}
+    <title>{{ title }}</title>
+<body>
+{{ content | safe }}
+{%- for js in encore.dribble.js -%}
+    <script src="{{ js }}"></script>
+{%- endfor -%}
+</body>
+</html>

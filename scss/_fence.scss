@@ -1,0 +1,172 @@
+.fence {
+  animation-duration: 1s;
+  animation-name: fence;
+  animation-timing-function: ease-out;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  position: relative;
+
+  @media screen and (min-width: 992px) {
+    min-height: 60vh;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 60px repeat(4, 1fr);
+  }
+
+  &-menu {
+    display: grid;
+    grid-column: 1;
+    grid-row: 1;
+    @media screen and (min-width: 992px) {
+      grid-column: 1 / 8;
+    }
+  }
+
+  &-intro {
+    grid-column: 1;
+    grid-row: 2;
+    animation-duration: 1.2s;
+    animation-name: intro;
+    animation-timing-function: ease-out;
+    display: flex;
+    transform: translate(-50px 0);
+    justify-content: center;
+    align-items: center;
+    @media screen and (min-width: 992px) {
+      grid-column: 1 / 3;
+      grid-row: 2 / 6;
+    }
+  }
+
+  &-scroll {
+    grid-column: 1;
+    grid-row: 3;
+    align-items: center;
+    animation-duration: 1.2s;
+    animation-name: scroll-slow;
+    animation-timing-function: ease-out;
+    display: flex;
+    justify-content: center;
+    transform-origin: 100% 100%;
+    z-index: 2;
+    @media screen and (min-width: 992px) {
+      max-height: auto;
+      grid-column: 3;
+      grid-row: 5;
+    }
+
+    &-bg {
+      animation-duration: 1s;
+      animation-name: scroll;
+      animation-timing-function: ease-out;
+      grid-column: 1;
+      grid-row: 3;
+      transform-origin: 100% 100%;
+      z-index: 1;
+      @media screen and (min-width: 992px) {
+        grid-column: 3;
+        grid-row: 5;
+      }
+    }
+  }
+
+  &-nav {
+    align-items: center;
+    animation-duration: .8s;
+    animation-name: nav-slow;
+    animation-timing-function: ease-out;
+    display: flex;
+    grid-column: 1;
+    grid-row: 4;
+    justify-content: space-around;
+    transform-origin: 100% 100%;
+    z-index: 2;
+    @media screen and (min-width: 992px) {
+      grid-column: 4 / 8;
+      grid-row: 4 / 6;
+    }
+
+    &-bg {
+      animation-duration: .6s;
+      animation-name: nav;
+      animation-timing-function: ease-out;
+      grid-column: 1;
+      grid-row: 4;
+      transform-origin: 100% 100%;
+      z-index: 1;
+      @media screen and (min-width: 992px) {
+        grid-column: 4 / 8;
+        grid-row: 4 / 6;
+      }
+    }
+  }
+}
+
+
+@keyframes fence {
+  0% {
+    background-position: center -40%;
+    opacity: 0;
+  }
+  100% {
+    background-position: center top;
+    opacity: 1;
+  }
+}
+
+@keyframes intro {
+  0% {
+    opacity: 0;
+    transform: translateX(25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: scaleY(0);
+  }
+  40% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes scroll-slow {
+  0% {
+    transform: scaleY(0);
+  }
+  70% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes nav {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes nav-slow {
+  0% {
+    transform: scaleY(0);
+  }
+  20% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}

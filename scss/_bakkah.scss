@@ -1,0 +1,23 @@
+$bakkah-size: 50px;
+
+.bakkah {
+  &-item {
+    margin-top: -$bakkah-size;
+    padding-top: $bakkah-size;
+    padding-bottom: $bakkah-size;
+    border-radius: $bakkah-size $bakkah-size 0 0;
+  }
+
+  &-card {
+    margin-top: $bakkah-size;
+    border-radius: 25px;
+    > :first-child {
+      margin-top: -$bakkah-size;
+      margin-right: $spacer;
+      margin-left: -1px;
+      width: calc(100% - (25px / 2));
+      border-radius: 25px;
+    }
+  }
+}
+

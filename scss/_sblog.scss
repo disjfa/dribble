@@ -1,0 +1,66 @@
+.sblog {
+  @media screen and (min-width: 992px) {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    min-height: 60vh;
+  }
+
+  &-left {
+    @media screen and (min-width: 992px) {
+      grid-column: 1 / 3;
+      grid-row: 1;
+    }
+  }
+
+  &-right {
+    @media screen and (min-width: 992px) {
+      grid-column: 6 / 8;
+      grid-row: 1;
+    }
+  }
+
+  &-picture {
+    min-height: 40vh;
+    overflow: hidden;
+    position: relative;
+
+    &-img {
+      background-position: center center;
+      background-size: cover;
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      &.in-view {
+        animation-duration: .6s;
+        animation-name: blur;
+        animation-timing-function: ease-out;
+      }
+    }
+  }
+
+  &-picture-right {
+    @media screen and (min-width: 992px) {
+      grid-column: 3 / 8;
+    }
+  }
+
+  &-picture-left {
+    @media screen and (min-width: 992px) {
+      grid-column: 1 / 6;
+    }
+  }
+}
+
+@keyframes blur {
+  0% {
+    filter: blur(10px);
+    transform: scale(1.1);
+  }
+  100% {
+    filter: blur(0px);
+    transform: scale(1);
+  }
+}

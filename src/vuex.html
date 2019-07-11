@@ -1,0 +1,113 @@
+---
+layout: layouts/base.html
+title: Vuex
+---
+
+<div class="container py-3">
+    <h1>Use vuex outside of vue</h1>
+    <p>
+        Here is a simple example of using vuex outside of vue. When you are in need of nice state management but don't
+        want the hassle of creating your own.
+    </p>
+    <h3>Lists</h3>
+    <form action="#" class="item">
+        <div class="list"></div>
+        <div class="form-group">
+            <label for="item">item</label>
+            <input type="text" class="form-control" name="item" placeholder="Add some text">
+        </div>
+        <button type="submit" class="btn btn-primary">add</button>
+    </form>
+    <hr>
+    <h3>Counter</h3>
+    <form action="#" class="increment">
+        <div class="form-group">
+            <div class="counter">0</div>
+        </div>
+        <button type="submit" class="btn btn-primary">+</button>
+    </form>
+</div>
+
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vuex"></script>
+<script>
+  Vue.use(Vuex);
+  var store = new Vuex.Store({
+    state: {
+      count: 0,
+      list: [
+        { item: 'Item 1' },
+        { item: 'Item 2' }
+      ]
+    },
+    mutations: {
+      createItem(state, payload) {
+        state.list.push({
+          item: payload,
+        });
+      },
+      increment(state) {
+        state.count++;
+      }
+    },
+    actions: {
+      addItem(context, payload) {
+        context.commit('createItem', payload);
+      }
+    }
+  });
+
+  var counter = document.querySelector('.counter');
+  var list = document.querySelector('.list');
+  updateCounter(store.state);
+  updateList(store.state);
+
+  function updateCounter(state) {
+    counter.innerHTML = state.count;
+  }
+
+  function updateList(state) {
+    var ul = document.createElement('ul');
+    for (var i = 0; i < state.list.length; i++) {
+      var li = document.createElement('li');
+      li.innerHTML = state.list[i].item;
+      ul.append(li);
+    }
+
+    list.innerHTML = '';
+    list.append(ul);
+  }
+
+  store.subscribe(function (mutation, state) {
+    if (mutation.type !== 'increment') {
+      return;
+    }
+    updateCounter(state);
+  });
+
+  store.subscribe(function (mutation, state) {
+    if (mutation.type !== 'createItem') {
+      return;
+    }
+    updateList(state);
+  });
+
+  store.subscribeAction((action, state) => {
+    // console.log(action);
+    // console.log(state);
+  });
+
+  document.addEventListener('submit', function (e) {
+    if (e.target.classList.contains('increment')) {
+      store.commit('increment');
+    }
+    if (e.target.classList.contains('item')) {
+      if (e.target.item.value) {
+        store.dispatch('addItem', e.target.item.value);
+        e.target.item.value = '';
+      }
+    }
+    e.preventDefault();
+    return false;
+  });
+</script>

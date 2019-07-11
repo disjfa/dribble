@@ -1,0 +1,14 @@
+---
+layout: layouts/base.html
+title: Home
+---
+
+<h1>Tmp dribble</h1>
+
+{{ collection.pages }}
+
+<ul>
+    {%- for post in collections.all -%}
+        <li><a href="{{ post.url | url }}">{{ post.data.title }}</a></li>
+    {%- endfor -%}
+</ul>

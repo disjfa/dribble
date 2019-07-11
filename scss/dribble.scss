@@ -1,0 +1,17 @@
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts/";
+$enable-rounded: false;
+$enable-shadows: true;
+
+@import '~bootstrap/scss/bootstrap.scss';
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import 'bakkah';
+@import 'carousel';
+@import 'fence';
+@import 'page';
+@import 'practice';
+@import 'saas';
+@import 'sblog';
+@import 'snap';
+@import 'split';

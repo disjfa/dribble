@@ -1,0 +1,88 @@
+---
+layout: layouts/base.html
+title: Touch
+---
+
+<div class="container py-3">
+    <div class="touch-row">
+        <div>
+            <div class="touch-left">
+                &times;
+            </div>
+            <div class="touch-left">
+                &planck;
+            </div>
+        </div>
+        <div class="touch py-3 bg-primary text-light text-center">
+            Hello world
+        </div>
+        <div>
+            &afr;
+        </div>
+    </div>
+</div>
+
+<script>
+  const touch = document.querySelector('.touch');
+  let touchobj;
+  let mouseobj;
+
+  touch.addEventListener('touchstart', function (event) {
+    touch.classList.remove('animate');
+    touchobj = event.changedTouches[0];
+  });
+
+  touch.addEventListener('click', function () {
+    return false;
+  });
+
+  touch.addEventListener('mousedown', function (event) {
+    touch.classList.remove('animate');
+    mouseobj = event;
+  });
+
+  document.addEventListener('mousemove', function (event) {
+    if (!mouseobj) {
+      return;
+    }
+    const x = event.pageX - mouseobj.pageX;
+    touch.style.transform = `translate(${x}px)`;
+  });
+
+  document.addEventListener('mouseup', function (event) {
+    if (!mouseobj) {
+      return;
+    }
+    touch.classList.add('animate');
+    touch.style.transform = `translate(0px)`;
+    mouseobj = null;
+  });
+
+  touch.addEventListener('touchmove', function (event) {
+    const x = event.changedTouches[0].pageX - touchobj.pageX;
+    touch.style.transform = `translate(${x}px)`;
+  });
+
+  touch.addEventListener('touchend', function () {
+    touch.classList.add('animate');
+    touch.style.transform = `translate(0px)`;
+  });
+</script>
+
+<style>
+    .touch-row {
+        display: grid;
+        grid-template-columns: 1fr 100% 1fr;
+        overflow: hidden;
+    }
+
+    .touch {
+        flex: 1;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .animate {
+        transition: transform .6s ease-in-out;
+    }
+</style>
