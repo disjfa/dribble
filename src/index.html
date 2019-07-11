@@ -3,12 +3,21 @@ layout: layouts/base.html
 title: Home
 ---
 
-<h1>Tmp dribble</h1>
-
-{{ collection.pages }}
-
-<ul>
-    {%- for post in collections.all -%}
-        <li><a href="{{ post.url | url }}">{{ post.data.title }}</a></li>
-    {%- endfor -%}
-</ul>
+<div class="container">
+    <h1>Dribble</h1>
+    <p>
+        Hi there, welcome to my playground. When i see some cool animations on the internet i try and make them, in html
+        and a basic setup using <a href="https://getbootstrap.com/">bootstrap</a>, <a href="https://fontawesome.com/">fontawesome</a>
+        and <a href="https://unsplash.com/">unsplash</a>. Then i try and recreate the page. This is just a playground
+        and you can check everything. If i donnt forget i will also add the <a href="https://codepen.io/">codepen</a>
+        example. I do try and think about the responsiveness of the pages.
+    </p>
+    <p>
+        Enjoy!
+    </p>
+    <ul>
+        {%- for post in collections.post -%}
+            <li><a href="{{ post.url | url }}">{{ post.data.title }}</a></li>
+        {%- endfor -%}
+    </ul>
+</div>
