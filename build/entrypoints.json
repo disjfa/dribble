@@ -1,0 +1,13 @@
+{
+  "entrypoints": {
+    "dribble": {
+      "js": [
+        "/dribble/build/runtime.f669a624.js",
+        "/dribble/build/dribble.0187dff7.js"
+      ],
+      "css": [
+        "/dribble/build/dribble.83777945.css"
+      ]
+    }
+  }
+}
