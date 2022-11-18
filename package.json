@@ -22,7 +22,7 @@
   "dependencies": {
     "@11ty/eleventy-plugin-syntaxhighlight": "^2.0.3",
     "@fortawesome/fontawesome-free": "^5.9.0",
-    "@symfony/webpack-encore": "^0.27.0",
+    "@symfony/webpack-encore": "^4.1.1",
     "all-contributors-cli": "^6.7.0",
     "bootstrap": "^4.3.1",
     "gh-pages": "^2.0.1",
